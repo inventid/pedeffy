@@ -19,7 +19,6 @@
     "@react-pdf/node": "^0.4.6",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
-    "fs-extra": "^4.0.2",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "uuid-v4": "^0.1.0"

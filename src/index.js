@@ -1,10 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const React = require('react');
-const ReactDOMServer = require('react-dom/server');
 import ReactPDF from '@react-pdf/node';
 import uuidV4 from 'uuid-v4';
-import fs from 'fs-extra';
+import fs from 'fs';
 import {Font} from '@react-pdf/core';
 
 const CONTENT_TYPE = 'Content-Type';
@@ -51,7 +50,7 @@ const createRenderServer = (pdfComponents, log = defaultLogger) => {
 			}));
 			log(INFO, `Rendered template ${template}`);
 		} catch (e) {
-			log(ERROR, `Error occured while rendering: "${e}"`);
+			log(ERROR, `Error occurred while rendering: "${e}"`);
 			console.log(e.stack);
 			response.status(500).end();
 		}
