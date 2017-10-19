@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run dist && node dist/index.js",
     "dist": "babel src --out-dir dist --presets es2015,react,babel-polyfill --plugins syntax-decorators",
-    "example": "babel . --ignore node_modules,dist --out-dir example-dist --presets es2015,react,babel-polyfill --plugins syntax-decorators && node example-dist/index.js",
+    "example": "babel . --ignore node_modules,dist,example-dist --out-dir example-dist --copy-files --presets es2015,react,babel-polyfill --plugins syntax-decorators && node example-dist/example/index.js",
     "watch": "babel src --out-dir dist -w --presets es2015,react,babel-polyfill --plugins syntax-decorators",
     "prepublish": "npm run dist",
     "lint": "eslint ."
@@ -17,6 +17,7 @@
     "@react-pdf/core": "^0.4.6",
     "@react-pdf/dom": "^0.4.6",
     "@react-pdf/node": "^0.4.6",
+    "babel-polyfill": "^6.16.0",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "react": "^16.0.0",

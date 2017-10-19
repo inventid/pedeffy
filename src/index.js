@@ -1,10 +1,13 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const React = require('react');
+// Conditionally load it, so people can use babel-node as well
+if (!global._babelPolyfill) {
+	require('babel-polyfill');
+}
+
+import express from 'express';
+import bodyParser from 'body-parser';
+import React from 'react';
 import ReactPDF from '@react-pdf/node';
 import uuidV4 from 'uuid-v4';
-import fs from 'fs';
-import {Font} from '@react-pdf/core';
 
 const CONTENT_TYPE = 'Content-Type';
 
@@ -22,9 +25,8 @@ const getBaseComponent = (components, component) => {
 
 const renderReact = async (component, data) => {
 	const rootElemComponent = React.createElement(component, data);
-	const path = `/tmp/${uuidV4()}.pdf`;
-	await ReactPDF.render(rootElemComponent, path);
-	return path;
+	const path = `${uuidV4()}.pdf`;
+	return await ReactPDF.renderToStream(rootElemComponent);
 };
 
 const createRenderServer = (pdfComponents, log = defaultLogger) => {
@@ -40,27 +42,20 @@ const createRenderServer = (pdfComponents, log = defaultLogger) => {
 				return;
 			}
 			response.set(CONTENT_TYPE, "application/pdf");
-			const path = await renderReact(reactTemplate, data);
-			const readStream = fs.createReadStream(path);
+			const readStream = await renderReact(reactTemplate, data);
 			readStream.pipe(response);
-			readStream.on('end', () => fs.unlink(path, () => {
-				console.log("File deleted");
-				Font.clear();
-				console.log(`Took ${new Date() - started}ms`);
-			}));
-			log(INFO, `Rendered template ${template}`);
+			// When the stream end the response is closed as well
+			readStream.on('end', () => log(INFO, `Rendered template ${template} in ${new Date() - started}ms`));
 		} catch (e) {
 			log(ERROR, `Error occurred while rendering: "${e}"`);
-			console.log(e.stack);
 			response.status(500).end();
 		}
-
 	};
 
 	const server = express();
 
-	server.use(bodyParser.json({limit: '1mb'}));
-	server.use(bodyParser.urlencoded({limit: '1mb', extended: true}));
+	server.use(bodyParser.json({limit : '1mb'}));
+	server.use(bodyParser.urlencoded({limit : '1mb', extended : true}));
 
 	server.get('/favicon.ico', (request, response) => response.status('404').end());
 
@@ -68,7 +63,7 @@ const createRenderServer = (pdfComponents, log = defaultLogger) => {
 	server.post('/:template', async (req, res) => {
 		const data = req.body;
 		Object.keys(req.query).forEach(value => {
-			if(data[value]) {
+			if (data[value]) {
 				log(WARN, `Body property '${value}' was overwritten by query param.`);
 				data[value] = req.query[value];
 			}

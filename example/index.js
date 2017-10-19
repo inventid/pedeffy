@@ -1,5 +1,3 @@
-import {Font} from "@react-pdf/core";
-
 const createRenderServer = require('../src/index');
 const pdfComponents = {
 	resume: require('./resume/index')

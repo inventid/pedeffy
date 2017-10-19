@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
 
 class Resume extends React.Component {
 
+	// Register your fonts here etc here
 	componentWillMount() {
 		Font.register(`${__dirname}/fonts/Open_Sans/OpenSans-Regular.ttf`, {
 			family : 'Open Sans',
@@ -54,6 +55,11 @@ class Resume extends React.Component {
 		Font.register(`${__dirname}/fonts/Lato/Lato-Bold.ttf`, {
 			family : 'Lato Bold',
 		});
+	}
+
+	// Unregister anything here to prevent resource leaking
+	componentWillUnmount() {
+		Font.clear();
 	}
 
 	render() {
@@ -74,11 +80,15 @@ class Resume extends React.Component {
 					</View>
 				</View>
 				<Text style={styles.footer}>
-					This IS the candidate you are looking for
+					{this.props.footer}
 				</Text>
 			</Page>
 		</Document>);
 	}
 }
+
+Resume.defaultProps = {
+	footer : 'Try adding a JSON with the `footer` key or the `footer` query parameter!'
+};
 
 module.exports = Resume;
