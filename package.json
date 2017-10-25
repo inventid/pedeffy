@@ -1,6 +1,6 @@
 {
   "name": "pedeffy",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Generate PDF files from a server and serve these as downloads",
   "main": "dist/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "dist": "babel src --out-dir dist --presets es2015,react,babel-polyfill --plugins syntax-decorators",
     "example": "babel . --ignore node_modules,dist,example-dist --out-dir example-dist --copy-files --presets es2015,react,babel-polyfill --plugins syntax-decorators && node example-dist/example/index.js",
     "watch": "babel src --out-dir dist -w --presets es2015,react,babel-polyfill --plugins syntax-decorators",
-    "prepublish": "npm run dist",
+    "prepublishOnly": "npm run dist",
     "lint": "eslint ."
   },
   "author": "inventid <info@inventid.nl>",
