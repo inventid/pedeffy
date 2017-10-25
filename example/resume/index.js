@@ -1,5 +1,6 @@
 import React from 'react';
 import {Document, Font, Image, Page, StyleSheet, Text, View,} from '@react-pdf/core';
+import PropTypes from 'prop-types';
 import Header from './Header';
 import Education from './Education';
 import Experience from './Experience';
@@ -89,6 +90,10 @@ class Resume extends React.Component {
 
 Resume.defaultProps = {
 	footer : 'Try adding a JSON with the `footer` key or the `footer` query parameter!'
+};
+
+Resume.propTypes = {
+	footer: PropTypes.string
 };
 
 module.exports = Resume;

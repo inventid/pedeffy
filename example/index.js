@@ -1,6 +1,12 @@
+// Conditionally load it, so people can use babel-node as well
+if (!global._babelPolyfill) {
+	require('babel-polyfill');
+}
+
 const createRenderServer = require('../src/index');
 const pdfComponents = {
-	resume: require('./resume/index')
+	resume: require('./resume/index'),
+	inventid: require('./inventid/firstPage'),
 };
 
 const port = process.env.PORT || 3000;
