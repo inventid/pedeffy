@@ -1,5 +1,8 @@
 # Pedeffy
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/a2f47a2b30f3c1df24cf/maintainability)](https://codeclimate.com/github/inventid/pedeffy/maintainability)
+[![Dependency Status](https://gemnasium.com/badges/github.com/inventid/pedeffy.svg)](https://gemnasium.com/github.com/inventid/pedeffy)
+
 Generate any PDF file from a template.
 Within a microservice.
 Using React.
@@ -11,7 +14,7 @@ What else would you want?
 Pedeffy uses the awesome [`react-pdf`](https://github.com/diegomura/react-pdf) package under the hood to transform your React code into the PDF you want.
 As a result, you can use the components from `react-pdf` to create your setup.
 
-To see this in action, see the `example/inventid/firstPage.js` file.
+To see this in action, see the [`example/inventid/firstPage.js`](https://github.com/inventid/pedeffy/blob/master/example/inventid/firstPage.js) file.
 You can use all of Reacts features to create nice reusable components.
 
 This is then combined with the [inventid](https://www.inventid.nl) approach used by [maily](http://github.com/inventid/maily).
