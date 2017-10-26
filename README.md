@@ -1,7 +1,5 @@
 # Pedeffy
 
-__Please note the current version is not in a working state__
-
 [![pedeffy on NPM](https://img.shields.io/npm/v/pedeffy.svg)](https://www.npmjs.com/package/pedeffy)
 [![Maintainability](https://api.codeclimate.com/v1/badges/a2f47a2b30f3c1df24cf/maintainability)](https://codeclimate.com/github/inventid/pedeffy/maintainability)
 [![Dependency Status](https://gemnasium.com/badges/github.com/inventid/pedeffy.svg)](https://gemnasium.com/github.com/inventid/pedeffy)
