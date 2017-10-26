@@ -1,6 +1,6 @@
 {
   "name": "pedeffy",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Generate PDF files from a server and serve these as downloads",
   "main": "dist/index.js",
   "scripts": {
