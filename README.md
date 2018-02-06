@@ -24,9 +24,9 @@ This gives you the flexibility to create a layout using React, and to get the re
 ## Example
 
 1. Clone this repository
-1. Ensure you use node `8.5`
-1. Run `npm install`
-1. Run `npm run example`
+1. Ensure you use node `8.9`
+1. Run `yarn install`
+1. Run `yarn example`
 1. Go to [`http://localhost:3000/resume`](http://localhost:3000/resume) where you will see the resume of Luke Skywalker
 1. Now go to [`http://localhost:3000/resume?footer=React-pdf%20as%20a%20service%20sounds%20like%20a%20great%20idea!`](http://localhost:3000/resume?footer=React-pdf%20as%20a%20service%20sounds%20like%20a%20great%20idea!). Note how the text in the footer is directly updated!
 
