@@ -19,7 +19,6 @@
     "babel-polyfill": "^6.16.0",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
-    "fontkit": "^1.7.7",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "uuid-v4": "^0.1.0"
