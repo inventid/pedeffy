@@ -14,8 +14,8 @@
   "author": "inventid <info@inventid.nl>",
   "license": "MIT",
   "dependencies": {
-    "@react-pdf/core": "0.6.3",
-    "@react-pdf/node": "0.6.3",
+    "@react-pdf/core": "0.7.1",
+    "@react-pdf/node": "0.7.1",
     "babel-polyfill": "^6.16.0",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
