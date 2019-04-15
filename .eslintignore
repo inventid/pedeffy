@@ -1,2 +1,6 @@
-dist
-example-dist
+build/
+node_modules/
+tests/result/
+tests/src/
+example/quixote
+
