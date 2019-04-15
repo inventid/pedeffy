@@ -80,8 +80,8 @@ Font.register({
 const luke = fs.readFileSync(`${__dirname}/luke.jpg`);
 
 class Resume extends React.Component {
-
-	views = () => <View style={styles.container}>
+	views = () => (
+		<View style={styles.container}>
 			<View style={styles.leftColumn}>
 				<Image
 					src={luke}
@@ -91,7 +91,8 @@ class Resume extends React.Component {
 				<Skills />
 			</View>
 			<Experience />
-		</View>;
+		</View>
+	);
 
 
 	render() {
