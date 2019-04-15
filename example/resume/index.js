@@ -1,5 +1,6 @@
 import React from 'react';
-import {Document, Font, Image, Page, StyleSheet, Text, View,} from '@react-pdf/core';
+import fs from 'fs';
+import {Document, Font, Image, Page, StyleSheet, Text, View,} from '@react-pdf/renderer';
 import PropTypes from 'prop-types';
 import Header from './Header';
 import Education from './Education';
@@ -7,8 +8,15 @@ import Experience from './Experience';
 import Skills from './Skills';
 
 const styles = StyleSheet.create({
+	page : {
+		padding : 30,
+	},
 	container : {
+		flex : 1,
 		flexDirection : 'row',
+		'@media max-width: 400' : {
+			flexDirection : 'column',
+		},
 	},
 	image : {
 		marginBottom : 10,
@@ -16,75 +24,87 @@ const styles = StyleSheet.create({
 	leftColumn : {
 		flexDirection : 'column',
 		width : 170,
-		marginLeft : 30,
-		marginRight : 15,
-		marginTop : 20,
-	},
-	rightColumn : {
-		flexDirection : 'column',
-		flexGrow : 1,
-		marginLeft : 15,
-		marginRight : 30,
-		marginTop : 20,
+		paddingTop : 30,
+		paddingRight : 15,
+		'@media max-width: 400' : {
+			width : '100%',
+			paddingRight : 0,
+		},
+		'@media orientation: landscape' : {
+			width : 200,
+		},
 	},
 	footer : {
 		fontSize : 12,
-		fontFamily : 'Lato Bold',
+		fontFamily : 'Lato',
+		fontWeight: 'bold',
 		textAlign : 'center',
 		marginTop : 25,
-		marginHorizontal : 30,
-		paddingVertical : 10,
+		paddingTop : 10,
 		borderWidth : 3,
 		borderColor : 'gray',
 		borderStyle : 'dashed',
+		'@media orientation: landscape' : {
+			marginTop : 10,
+		},
 	},
 });
 
+Font.register({
+	family : 'Open Sans',
+	src : `${__dirname}/fonts/Open_Sans/OpenSans-Regular.ttf`,
+	fontStyle : 'normal',
+	fontWeight : 'normal',
+});
+Font.register({
+	family : 'Lato',
+	src : `${__dirname}/fonts/Lato/Lato-Regular.ttf`,
+	fontStyle : 'normal',
+	fontWeight : 'normal',
+});
+Font.register({
+	family : 'Lato',
+	src : `${__dirname}/fonts/Lato/Lato-Italic.ttf`,
+	fontStyle : 'italic',
+	fontWeight : 'normal',
+});
+Font.register({
+	family : 'Lato',
+	src : `${__dirname}/fonts/Lato/Lato-Bold.ttf`,
+	fontStyle : 'normal',
+	fontWeight : 'bold',
+});
+
+const luke = fs.readFileSync(`${__dirname}/luke.jpg`);
+
 class Resume extends React.Component {
-
-	// Register your fonts here etc here
-	componentWillMount() {
-		Font.register(`${__dirname}/fonts/Open_Sans/OpenSans-Regular.ttf`, {
-			family : 'Open Sans',
-		});
-		Font.register(`${__dirname}/fonts/Lato/Lato-Regular.ttf`, {
-			family : 'Lato',
-		});
-		Font.register(`${__dirname}/fonts/Lato/Lato-Italic.ttf`, {
-			family : 'Lato Italic',
-		});
-		Font.register(`${__dirname}/fonts/Lato/Lato-Bold.ttf`, {
-			family : 'Lato Bold',
-		});
-	}
-
-	// Unregister anything here to prevent resource leaking
-	componentWillUnmount() {
-		Font.clear();
-	}
-
 	render() {
-		return (<Document>
-			<Page size="A4">
-				<Header/>
-				<View style={styles.container}>
-					<View style={styles.leftColumn}>
-						<Image
-							src="https://images.gr-assets.com/characters/1264613782p8/1783.jpg"
-							style={styles.image}
-						/>
-						<Education/>
-						<Skills/>
-					</View>
-					<View style={styles.rightColumn}>
+		return (
+			<Document
+				author="Luke Skywalker"
+				keywords="awesome, resume, start wars"
+				subject="The resume of Luke Skywalker"
+				title="Resume"
+			>
+				<Page {...this.props} style={styles.page}>
+					<Header/>
+					<View style={styles.container}>
+						<View style={styles.leftColumn}>
+							<Image
+								src={luke}
+								style={styles.image}
+							/>
+							<Education/>
+							<Skills/>
+						</View>
 						<Experience/>
 					</View>
-				</View>
-				<Text style={styles.footer}>
-					{this.props.footer}
-				</Text>
-			</Page>
-		</Document>);
+					<Text style={styles.footer}>
+						{this.props.footer}
+					</Text>
+				</Page>
+			</Document>
+		);
 	}
 }
 
@@ -93,7 +113,7 @@ Resume.defaultProps = {
 };
 
 Resume.propTypes = {
-	footer: PropTypes.string
+	footer : PropTypes.string
 };
 
-module.exports = Resume;
+export default Resume;

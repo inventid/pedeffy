@@ -1,2 +1,4 @@
-dist
-example-dist
+build/
+node_modules/
+tests/result
+

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Document, Font, Image, Page, StyleSheet, Text, View,} from '@react-pdf/core';
+import {Document, Font, Image, Page, StyleSheet, Text, View,} from '@react-pdf/renderer';
 import fs from 'fs';
 import PropTypes from 'prop-types';
 
@@ -27,8 +27,8 @@ const styles = StyleSheet.create({
 	rightColumn : {
 		flexDirection : 'column',
 		flexGrow : 1,
-		height: 780,
-		overflow: 'hidden'
+		height : 780,
+		overflow : 'hidden'
 	},
 });
 
@@ -43,21 +43,16 @@ function Spacer() {
 	return <View style={{marginBottom : BEAUTIFUL_MARGIN * 2}}/>;
 }
 
+Font.register({
+	family : 'Open Sans',
+	src : `${__dirname}/Open_Sans/OpenSans-Regular.ttf`,
+	fontStyle : 'normal',
+	fontWeight : 'normal',
+});
+
 const logo = fs.readFileSync(`${__dirname}/logo-6d10589dc3bb992cf77d8ede61131996.png`);
 
 class FirstPage extends React.Component {
-
-	// Register your fonts here etc here
-	componentWillMount() {
-		Font.register(`${__dirname}/Open_Sans/OpenSans-Regular.ttf`, {
-			family : 'Open Sans',
-		});
-	}
-
-	// Unregister anything here to prevent resource leaking
-	componentWillUnmount() {
-		Font.clear();
-	}
 
 	render() {
 		const address = newLinedText(styles.leftText, `inventid
@@ -65,15 +60,15 @@ class FirstPage extends React.Component {
 			303T2P Rotterdam`);
 		const internetAddress = newLinedText(styles.leftText, `www.inventid.nl
 			info@inventid.nl`);
-		const contactInfo = newLinedText(Object.assign({}, styles.leftText, {fontSize: 9}), `ING: NL77INGB0007728952
+		const contactInfo = newLinedText(Object.assign({}, styles.leftText, {fontSize : 9}), `ING: NL77INGB0007728952
 			KvK: 54013887
 			BTW: NL851117144B01`);
 
 		const rightColumnStyle = Object.assign({}, styles.rightColumn);
 		if (this.props.dev) {
 			Object.assign(rightColumnStyle, {
-				borderWidth: 1,
-				borderColor: 'black',
+				borderWidth : 1,
+				borderColor : 'black',
 			});
 		}
 
@@ -84,7 +79,7 @@ class FirstPage extends React.Component {
 				<View style={styles.container}>
 					<View style={styles.leftColumn}>
 						<Image
-							src={{data: logo, format: 'png'}}
+							src={{data : logo, format : 'png'}}
 							style={styles.image}
 						/>
 						{address}
@@ -103,12 +98,12 @@ class FirstPage extends React.Component {
 }
 
 FirstPage.defaultProps = {
-	dev: false
+	dev : false
 };
 
 FirstPage.propTypes = {
-	children: PropTypes.node.isRequired,
-	dev: PropTypes.bool
+	children : PropTypes.node.isRequired,
+	dev : PropTypes.bool
 };
 
 module.exports = FirstPage;
