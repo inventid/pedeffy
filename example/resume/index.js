@@ -80,6 +80,20 @@ Font.register({
 const luke = fs.readFileSync(`${__dirname}/luke.jpg`);
 
 class Resume extends React.Component {
+
+	views = () => <View style={styles.container}>
+			<View style={styles.leftColumn}>
+				<Image
+					src={luke}
+					style={styles.image}
+				/>
+				<Education />
+				<Skills />
+			</View>
+			<Experience />
+		</View>;
+
+
 	render() {
 		const { footer } = this.props;
 		return (
@@ -91,17 +105,7 @@ class Resume extends React.Component {
 			>
 				<Page {...this.props} style={styles.page}>
 					<Header />
-					<View style={styles.container}>
-						<View style={styles.leftColumn}>
-							<Image
-								src={luke}
-								style={styles.image}
-							/>
-							<Education />
-							<Skills />
-						</View>
-						<Experience />
-					</View>
+					{this.views()}
 					<Text style={styles.footer}>
 						{footer}
 					</Text>
