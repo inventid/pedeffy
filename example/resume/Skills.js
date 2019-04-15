@@ -1,24 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {StyleSheet, Text, View} from '@react-pdf/renderer';
+import { StyleSheet, Text, View } from '@react-pdf/renderer';
 import Title from './Title';
-import List, {Item} from './List';
+import List, { Item } from './List';
 
 const styles = StyleSheet.create({
-	title : {
-		fontFamily : 'Lato',
+	title: {
+		fontFamily: 'Lato',
 		fontWeight: 'bold',
-		fontSize : 11,
-		marginBottom : 10,
+		fontSize: 11,
+		marginBottom: 10,
 	},
-	skills : {
-		fontFamily : 'Lato',
-		fontSize : 10,
-		marginBottom : 10,
+	skills: {
+		fontFamily: 'Lato',
+		fontSize: 10,
+		marginBottom: 10,
 	},
 });
 
-const SkillEntry = ({name, skills}) => (
+const SkillEntry = ({ name, skills }) => (
 	<View>
 		<Text style={styles.title}>{name}</Text>
 		<List>
@@ -44,8 +44,8 @@ const Skills = () => (
 );
 
 SkillEntry.propTypes = {
-	name : PropTypes.string,
-	skills : PropTypes.array,
+	name: PropTypes.string,
+	skills: PropTypes.array,
 };
 
 export default Skills;
