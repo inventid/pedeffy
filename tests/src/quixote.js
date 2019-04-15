@@ -59,7 +59,7 @@ const Quixote = () => (
 			<Text style={styles.author}>Miguel de Cervantes</Text>
 			<Image
 				style={styles.image}
-				src="/static/images/quijote1.jpg"
+				src="https://react-pdf.org/static/images/quijote1.jpg"
 			/>
 			<Text style={styles.subtitle}>
 				Capítulo I: Que trata de la condición y ejercicio del famoso hidalgo D.
@@ -141,7 +141,7 @@ const Quixote = () => (
 			</Text>
 			<Image
 				style={styles.image}
-				src="/static/images/quijote2.png"
+				src="https://react-pdf.org/static/images/quijote2.png"
 			/>
 			<Text style={styles.text}>
 				Hechas, pues, estas prevenciones, no quiso aguardar más tiempo a poner

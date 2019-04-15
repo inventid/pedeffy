@@ -36,6 +36,8 @@ const eliminateCreationDate = input => input.toString().split('\n')
 
 const compare = async (template, path, result) => {
 	if (WRITE_MODE) {
+		// The original is written, including the annoying parts which trigger git changes
+		// Otherwise the resulting PDF might now be readable on certain platforms :\
 		console.log(color.green(`Writing ${template} to ${path}`));
 		fs.writeFileSync(path, result, fileOptions);
 	} else {
