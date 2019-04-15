@@ -1,10 +1,12 @@
 import React from 'react';
-import { Document, Page, Text } from '@react-pdf/renderer';
+import {Document, Page, Text, View} from '@react-pdf/renderer';
 
 class Jaja extends React.Component {
 	render() {
 		return (
-			<Text>Jaja</Text>
+			<View>
+				<Text>Jaja</Text>
+			</View>
 		);
 	}
 }
@@ -14,7 +16,7 @@ export default class Plain extends React.Component {
 		return (
 			<Document title={this.props.title} author="inventid">
 				<Page size="A4">
-					<Jaja />
+					<Jaja/>
 				</Page>
 			</Document>
 		);

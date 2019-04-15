@@ -96,7 +96,9 @@ module.exports = {
     "prefer-const": ["error", {
       "destructuring": "all",
       "ignoreReadBeforeAssign": true,
-    }]
+    }],
+    "react/no-array-index-key": 0,
+
   },
   "overrides": [
     {

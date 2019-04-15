@@ -81,6 +81,7 @@ const luke = fs.readFileSync(`${__dirname}/luke.jpg`);
 
 class Resume extends React.Component {
 	render() {
+		const { footer } = this.props;
 		return (
 			<Document
 				author="Luke Skywalker"
@@ -102,7 +103,7 @@ class Resume extends React.Component {
 						<Experience />
 					</View>
 					<Text style={styles.footer}>
-						{this.props.footer}
+						{footer}
 					</Text>
 				</Page>
 			</Document>

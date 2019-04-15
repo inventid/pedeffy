@@ -49,7 +49,7 @@ export default () => (
 			<Text style={styles.subtitle}>Jedi Master</Text>
 		</View>
 		<View style={styles.linkColumn}>
-			<Link style={styles.link}>luke@theforce.com</Link>
+			<Link style={styles.link} href="mailto:luke@theforce.com">luke@theforce.com</Link>
 		</View>
 	</View>
 );

@@ -27,16 +27,24 @@ const dmp = new DiffMatchPatch();
 const fileOptions = {
 	encoding: 'utf8',
 };
+
+const eliminateCreationDate = input => input.toString().split('\n')
+	.filter(e => !e.startsWith('/CreationDate '))
+	.filter(e => !e.startsWith('/BaseFont '))
+	.filter(e => !e.startsWith('/FontName '))
+	.join('\n');
+
 const compare = async (template, path, result) => {
 	if (WRITE_MODE) {
 		console.log(color.green(`Writing ${template} to ${path}`));
 		fs.writeFileSync(path, result, fileOptions);
 	} else {
-		const expectation = fs.readFileSync(path, fileOptions).toString();
-		if (expectation !== result) {
+		const expectation = eliminateCreationDate(fs.readFileSync(path, fileOptions).toString());
+		const cleanedResult = eliminateCreationDate(result);
+		if (expectation !== cleanedResult) {
 			console.log(color.red(`\n\nMismatch in ${template}. The following diff was generated:`));
 
-			const diff = dmp.diff_main(expectation, result, false);
+			const diff = dmp.diff_main(expectation, cleanedResult, false);
 			for (let i = 0; i < diff.length; i += 1) {
 				let [type, text] = diff[i];
 				if (text === '\n') {
@@ -63,7 +71,7 @@ const onReady = async () => {
 
 	for (let i = 0; i < components.length; i += 1) {
 		const template = components[i];
-		const result = await fetch(`http://localhost:${port}/${template}`).then(x => x.text());
+		const result = await fetch(`http://localhost:${port}/${template}`).then(x => x.buffer());
 		const path = `${dir}/${template}.pdf`;
 		await compare(template, path, result);
 	}

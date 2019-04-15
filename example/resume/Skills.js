@@ -44,8 +44,8 @@ const Skills = () => (
 );
 
 SkillEntry.propTypes = {
-	name: PropTypes.string,
-	skills: PropTypes.array,
+	name: PropTypes.string.isRequired,
+	skills: PropTypes.arrayOf([PropTypes.string.isRequired]).isRequired,
 };
 
 export default Skills;

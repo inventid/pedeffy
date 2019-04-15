@@ -9,7 +9,10 @@ const INFO = 'info';
 const WARN = 'warning';
 const ERROR = 'error';
 
-const defaultLogger = (level, message) => console.log(`${new Date()} ${level}: ${message}`);
+const defaultLogger = (level, message) => {
+	// eslint-disable-next-line no-console
+	console.log(`${new Date()} ${level}: ${message}`);
+};
 
 const getBaseComponent = (components, component) => {
 	if (component in components) {

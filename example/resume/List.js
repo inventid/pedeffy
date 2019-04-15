@@ -28,11 +28,11 @@ export const Item = ({ children }) => (
 );
 
 List.propTypes = {
-	children: PropTypes.node,
+	children: PropTypes.node.isRequired,
 };
 
 Item.propTypes = {
-	children: PropTypes.node,
+	children: PropTypes.node.isRequired,
 };
 
 export default List;

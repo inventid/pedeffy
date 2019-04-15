@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
 const Title = ({ children }) => <Text style={styles.title}>{children}</Text>;
 
 Title.propTypes = {
-	children: PropTypes.node,
+	children: PropTypes.node.isRequired,
 };
 
 export default Title;

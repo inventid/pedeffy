@@ -151,10 +151,17 @@ const Experience = () => (
 	</View>
 );
 
+ExperienceEntry.defaultProps = {
+	details: [],
+	date: new Date().toISOString(),
+	company: 'Magnet.me',
+	position: 'Software Engineer',
+};
+
 ExperienceEntry.propTypes = {
 	company: PropTypes.string,
 	date: PropTypes.string,
-	details: PropTypes.array,
+	details: PropTypes.arrayOf([PropTypes.string.isRequired]),
 	position: PropTypes.string,
 };
 

@@ -56,6 +56,13 @@ const logo = fs.readFileSync(`${__dirname}/logo-6d10589dc3bb992cf77d8ede61131996
 
 class FirstPage extends React.Component {
 	render() {
+		const {
+			dev,
+			children,
+			text,
+			title,
+		} = this.props;
+
 		const address = newLinedText(styles.leftText, `inventid
 			Superstreet 14a
 			303T2P Rotterdam`);
@@ -66,17 +73,17 @@ class FirstPage extends React.Component {
 			BTW: NL851117144B01`);
 
 		const rightColumnStyle = Object.assign({}, styles.rightColumn);
-		if (this.props.dev) {
+		if (dev) {
 			Object.assign(rightColumnStyle, {
 				borderWidth: 1,
 				borderColor: 'black',
 			});
 		}
 
-		const children = this.props.children ? this.props.children : newLinedText({}, this.props.text);
+		const childrenInner = children || newLinedText({}, text);
 
 		return (
-			<Document title={this.props.title} author="inventid">
+			<Document title={title} author="inventid">
 				<Page size="A4">
 					<View style={styles.container}>
 						<View style={styles.leftColumn}>
@@ -91,7 +98,7 @@ class FirstPage extends React.Component {
 							{contactInfo}
 						</View>
 						<View style={rightColumnStyle}>
-							{children}
+							{childrenInner}
 						</View>
 					</View>
 				</Page>
@@ -106,6 +113,8 @@ FirstPage.defaultProps = {
 
 FirstPage.propTypes = {
 	children: PropTypes.node.isRequired,
+	text: PropTypes.string.isRequired,
+	title: PropTypes.string.isRequired,
 	dev: PropTypes.bool,
 };
 
