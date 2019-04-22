@@ -1,10 +1,9 @@
 import React from 'react';
 import fs from 'fs';
-import {
-	Document, Image, Page, StyleSheet, Text, View,
-} from '@react-pdf/renderer';
 import PropTypes from 'prop-types';
-import { Font } from '../../src/index';
+import {
+	Document, Image, Page, StyleSheet, Text, View, Font,
+} from '../../src/index';
 import Header from './Header';
 import Education from './Education';
 import Experience from './Experience';

@@ -1,7 +1,18 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import React from 'react';
-import ReactPDF, { Font as ReactPdfFont } from '@react-pdf/renderer';
+import ReactPDF, {
+	Document,
+	Page,
+	View,
+	Image,
+	Text,
+	Canvas,
+	Link,
+	Note,
+	Font,
+	StyleSheet,
+} from '@react-pdf/renderer';
 
 const CONTENT_TYPE = 'Content-Type';
 
@@ -74,9 +85,18 @@ const createRenderServer = (pdfComponents, { logger = defaultLogger }) => {
 	return server;
 };
 
-// The font needs to be exported like this as it sets some values on its scope
-// If one uses the direct font in their server, the font is not defined there
-// as that is not the taken render path.
-export const Font = ReactPdfFont;
+// We will export all types from ReactPDF so people can use those and there is only one render path
+export {
+	Document,
+	Page,
+	View,
+	Image,
+	Text,
+	Canvas,
+	Link,
+	Note,
+	Font,
+	StyleSheet,
+};
 
 export default createRenderServer;

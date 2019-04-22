@@ -1,10 +1,9 @@
 import React from 'react';
-import {
-	Document, Image, Page, StyleSheet, Text, View,
-} from '@react-pdf/renderer';
 import fs from 'fs';
 import PropTypes from 'prop-types';
-import { Font } from '../../src/index';
+import {
+	Document, Image, Page, StyleSheet, Text, View, Font,
+} from '../../src/index';
 
 const BEAUTIFUL_MARGIN = 8;
 

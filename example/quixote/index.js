@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-	Document, Image, Page, StyleSheet, Text,
-} from '@react-pdf/renderer';
-import {Font} from '../../src/index';
+import {Document, Image, Page, StyleSheet, Text, Font} from '../../src/index';
 
 Font.register(
 	{

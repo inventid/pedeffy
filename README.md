@@ -30,6 +30,11 @@ This gives you the flexibility to create a layout using React, and to get the re
 1. Go to [`http://localhost:3000/resume`](http://localhost:3000/resume) where you will see the resume of Luke Skywalker
 1. Now go to [`http://localhost:3000/resume?footer=React-pdf%20as%20a%20service%20sounds%20like%20a%20great%20idea!`](http://localhost:3000/resume?footer=React-pdf%20as%20a%20service%20sounds%20like%20a%20great%20idea!). Note how the text in the footer is directly updated!
 
+### Using `react-pdf` components
+
+Components should not be used through `react-pdf` named export, but should use the named export on `pedeffy` itself.
+This ensures the fonts, among other things, are registered in the correct render path.
+
 ## What to use it for?
 
 At inventid, we use it for the following purposes: Generate lots of documents using a framework (React) which we love and library (react-pdf) which is really easy to learn.
