@@ -21,7 +21,7 @@
   "author": "inventid <info@inventid.nl>",
   "license": "MIT",
   "dependencies": {
-    "@react-pdf/renderer": "^1.5.3",
+    "@react-pdf/renderer": "1.5.4",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "prop-types": "^15.7.2",
